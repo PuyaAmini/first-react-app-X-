@@ -4,6 +4,12 @@ import {useState} from 'react'
 
 
 function App() {
+  let lastUpdateTime = new Date().getTime();
+  const getNewEventsFromDB = async ()=>{
+    const response = await fetch (`/api/events?since=${lastUpdateTime}`);
+    const newEvents = await response.json();
+    return newEvents;
+  }
 
   const [events , setEvents] = useState([
     {title:"say st to macs" , id : 1},
@@ -14,9 +20,12 @@ function App() {
 
   const handleClick = (id) =>{
     setEvents((prevEvents)=>{
-      return prevEvents.filter((event)=>{
-        return id != event.id
-      })
+      const updateEvents = prevEvents.filter((event) => event.id !== id);
+      const fetchNewEvents = async () =>{
+        const newEvents = await getNewEventsFromDB();
+        return [...updateEvents , ...newEvents];
+      }
+      return fetchNewEvents();
     })
     console.log(id)
     }
