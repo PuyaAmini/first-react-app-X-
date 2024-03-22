@@ -1,49 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
-import {useState} from 'react'
+import { useState, useEffect } from 'react';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
+// تنظیمات Firebase را در اینجا قرار دهید
 
 function App() {
-  let lastUpdateTime = new Date().getTime();
-  const getNewEventsFromDB = async ()=>{
-    const response = await fetch (`/api/events?since=${lastUpdateTime}`);
-    const newEvents = await response.json();
-    return newEvents;
-  }
+  const [events, setEvents] = useState([]);
 
-  const [events , setEvents] = useState([
-    {title:"say st to macs" , id : 1},
-    {title:"buy some apple" , id : 2},
-    {title:"charge the car battery" , id : 3},
-    {title:"close the citadel gates" , id : 4}
-  ])
+  useEffect(() => {
+    // گوش دادن به تغییرات در پایگاه داده Firebase
+    const eventsRef = firebase.database().ref('events');
+    eventsRef.on('value', (snapshot) => {
+      const eventsData = snapshot.val() || {};
+      const newEvents = Object.values(eventsData);
+      setEvents(newEvents);
+    });
 
-  const handleClick = (id) =>{
-    setEvents((prevEvents)=>{
-      const updateEvents = prevEvents.filter((event) => event.id !== id);
-      const fetchNewEvents = async () =>{
-        const newEvents = await getNewEventsFromDB();
-        return [...updateEvents , ...newEvents];
-      }
-      return fetchNewEvents();
-    })
-    console.log(id)
-    }
+    // تمیز کردن گوش دادن به تغییرات در هنگام unmount شدن کامپوننت
+    return () => eventsRef.off();
+  }, []);
+
+  const handleClick = (id) => {
+    setEvents((prevEvents) => prevEvents.filter((event) => event.id !== id));
+  };
 
   return (
     <div className="App">
-    {events.map((event , index) =>(
-      <div  key = {event.id}>
-        <h3>{index} - {event.title}</h3>
-        <button onClick={()=> handleClick(event.id)}>delete Event</button>
-      </div>
-      
-    ))}
-
-
-      
+      {events.map((event) => (
+        <div key={event.id}>
+          <h3>{event.title}</h3>
+          <button onClick={() => handleClick(event.id)}>حذف رویداد</button>
+        </div>
+      ))}
     </div>
-
   );
 }
 
