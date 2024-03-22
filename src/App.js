@@ -1,7 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
 import {useState} from 'react'
-
 
 function App() {
 
@@ -20,21 +18,23 @@ function App() {
     })
     console.log(id)
     }
+    const [showEvents , setShowEvents] = useState(true)
 
   return (
     <div className="App">
-    {events.map((event , index) =>(
+      {showEvents && (<div>
+        <button onClick={()=>{setShowEvents(false)}}> Hide Contents</button>
+      </div>)}
+      {!showEvents && (<div>
+        <button onClick={() => {setShowEvents(true)}}> Show Contents</button>
+      </div>)}
+    {showEvents && events.map((event , index) =>(
       <div  key = {event.id}>
         <h3>{index} - {event.title}</h3>
         <button onClick={()=> handleClick(event.id)}>delete Event</button>
-      </div>
-      
-    ))}
-
-
-      
+      </div>    
+    ))}    
     </div>
-
   );
 }
 
