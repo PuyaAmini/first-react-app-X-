@@ -1,5 +1,5 @@
 import './App.css';
-import {useState} from 'react'
+import React, {useState} from 'react'
 import Title from './components/title'
 function App() {
 
@@ -26,18 +26,18 @@ function App() {
     <div className="App">
       <Title title = "Mario kingdom Events"  subtitle={subtitle}/>
       <Title title = "luigi santa lvov"  subtitle="He's not a friend"/>
-      
-      {showEvents && (<div>
+
+      {showEvents && (<React.Fragment>
         <button onClick={()=>{setShowEvents(false)}}> Hide Contents</button>
-      </div>)}
-      {!showEvents && (<div>
+      </React.Fragment>)}
+      {!showEvents && (<React.Fragment>
         <button onClick={() => {setShowEvents(true)}}> Show Contents</button>
-      </div>)}
+      </React.Fragment>)}
     {showEvents && events.map((event , index) =>(
-      <div  key = {event.id}>
+      <React.Fragment  key = {event.id}>
         <h3>{index} - {event.title}</h3>
         <button onClick={()=> handleClick(event.id)}>delete Event</button>
-      </div>    
+      </React.Fragment>    
     ))}    
     </div>
   );
