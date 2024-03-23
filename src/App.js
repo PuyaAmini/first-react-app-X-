@@ -1,6 +1,9 @@
 import './App.css';
 import React, {useState} from 'react'
 import Title from './components/title'
+import Modal from './components/Modal'
+
+
 function App() {
 
   const [events , setEvents] = useState([
@@ -13,7 +16,7 @@ function App() {
   const handleClick = (id) =>{
     setEvents((prevEvents)=>{
       return prevEvents.filter((event)=>{
-        return id != event.id
+        return id !== event.id
       })
     })
     console.log(id)
@@ -25,7 +28,6 @@ function App() {
   return (
     <div className="App">
       <Title title = "Mario kingdom Events"  subtitle={subtitle}/>
-      <Title title = "luigi santa lvov"  subtitle="He's not a friend"/>
 
       {showEvents && (<React.Fragment>
         <button onClick={()=>{setShowEvents(false)}}> Hide Contents</button>
@@ -39,6 +41,14 @@ function App() {
         <button onClick={()=> handleClick(event.id)}>delete Event</button>
       </React.Fragment>    
     ))}    
+      {/* <Modal>
+        <h2>10% Off Coupon Code!!</h2>
+        <p>Use the code NINJA10 at the checkout.</p>
+      </Modal> */}
+      <Modal>
+      <img src="./logo192.png" alt="nop" />
+      <h3> who's the Enemy?</h3>
+      </Modal>
     </div>
   );
 }
