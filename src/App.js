@@ -23,8 +23,8 @@ function App() {
   const [showEvents , setShowEvents] = useState(true)
   
   //modal closing button func:
-  const [showModal , setShowModal] = useState(true);
-  console.log(showModal)
+  const [showModal , setShowModal] = useState(false);
+  console.log(showModal);
   const handleClose = () =>{
     setShowModal(false)
   }
@@ -48,16 +48,18 @@ function App() {
         <h3>{index} - {event.title}</h3>
         <button onClick={()=> handleClick(event.id)}>delete Event</button>
       </React.Fragment>    
-    ))}    
+    ))}
+    <br/>    
       {/* <Modal>
         <h2>10% Off Coupon Code!!</h2>
         <p>Use the code NINJA10 at the checkout.</p>
       </Modal> */}
-      
+
       {showModal && <Modal handleClose={handleClose}>
       <img src="./logo192.png" alt="nop" />
       <h3> who's the Enemy?</h3>
       </Modal>}
+      <button onClick={() => setShowModal(true)}>show Modal</button>
     </div>
   );
 }
