@@ -51,7 +51,7 @@ function App() {
         <p>Use the code NINJA10 at the checkout.</p>
       </Modal> */}
 
-      {showModal && <Modal handleClose={handleClose}>
+      {showModal && <Modal handleClose={handleClose} isSalesModel={true}>
       <img src="./logo192.png" alt="nop" />
       <h3> who's the Enemy?</h3>
       </Modal>}
