@@ -2,6 +2,7 @@ import './App.css';
 import React, {useState} from 'react'
 import Title from './components/title'
 import Modal from './components/Modal'
+import EventList from './components/EventList';
 
 
 function App() {
@@ -43,12 +44,7 @@ function App() {
       {!showEvents && (<React.Fragment>
         <button onClick={() => {setShowEvents(true)}}> Show Contents</button>
       </React.Fragment>)}
-    {showEvents && events.map((event , index) =>(
-      <React.Fragment  key = {event.id}>
-        <h3>{index} - {event.title}</h3>
-        <button onClick={()=> handleClick(event.id)}>delete Event</button>
-      </React.Fragment>    
-    ))}
+    {showEvents && <EventList events={events} handleClick={handleClick}/>}
     <br/>    
       {/* <Modal>
         <h2>10% Off Coupon Code!!</h2>
