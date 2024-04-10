@@ -8,25 +8,24 @@ import NewEventForm from './components/NewEventForm';
 
 function App() {
 // Events list and funcs:
-  const [events , setEvents] = useState([
-    {title:"say st to macs" , id : 1},
-    {title:"buy some apple" , id : 2},
-    {title:"charge the car battery" , id : 3},
-    {title:"close the citadel gates" , id : 4}
-  ])
+  const [events , setEvents] = useState([])
+  const addEvent = (event) => {
+    setEvents((prevEvents) => {
+      return [...prevEvents , event]
+    })
+    setShowModal(false)
+  }
   const handleClick = (id) =>{
     setEvents((prevEvents)=>{
       return prevEvents.filter((event)=>{
         return id !== event.id
       })
     })
-    console.log(id)
   }
   const [showEvents , setShowEvents] = useState(true)
   
   //modal closing button func:
   const [showModal , setShowModal] = useState(false);
-  console.log(showModal);
   const handleClose = () =>{
     setShowModal(false)
   }
@@ -53,7 +52,7 @@ function App() {
       </Modal> */}
 
       {showModal && <Modal handleClose={handleClose} isSalesModel={true}>
-      <NewEventForm/>
+      <NewEventForm addEvent={addEvent}/>
       </Modal>}
       <button onClick={() => setShowModal(true)}>show Modal</button>
     </div>

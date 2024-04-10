@@ -9,10 +9,3 @@
        font-size: 1.2em;
 
 }
-.new-event-form p.reset{
-       cursor: pointer;
-       display: inline;
-       background: #ff4500;
-       color: #fff;
-       border-radius: 4px;
-}
