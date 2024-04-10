@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import Title from './components/title'
 import Modal from './components/Modal'
 import EventList from './components/EventList';
+import NewEventForm from './components/NewEventForm';
 
 
 function App() {
@@ -52,8 +53,7 @@ function App() {
       </Modal> */}
 
       {showModal && <Modal handleClose={handleClose} isSalesModel={true}>
-      <img src="./logo192.png" alt="nop" />
-      <h3> who's the Enemy?</h3>
+      <NewEventForm/>
       </Modal>}
       <button onClick={() => setShowModal(true)}>show Modal</button>
     </div>
