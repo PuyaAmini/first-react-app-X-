@@ -7,14 +7,16 @@ import NewEventForm from './components/NewEventForm';
 
 
 function App() {
-// Events list and funcs:
-  const [events , setEvents] = useState([])
+// Events funcs:
+const [events , setEvents] = useState([]) //used by <EventList/>
+  // add event : exported from <NewEventForm/> to NewEventForm.js
   const addEvent = (event) => {
     setEvents((prevEvents) => {
       return [...prevEvents , event]
     })
     setShowModal(false)
   }
+    //delete event
   const handleClick = (id) =>{
     setEvents((prevEvents)=>{
       return prevEvents.filter((event)=>{
@@ -22,6 +24,7 @@ function App() {
       })
     })
   }
+
   const [showEvents , setShowEvents] = useState(true)
   
   //modal closing button func:
