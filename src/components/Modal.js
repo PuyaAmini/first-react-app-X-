@@ -1,13 +1,15 @@
 import React from 'react'
+import ReactDom from 'react-dom'
+
 import './modal.css'
 export default function Modal({children , handleClose}) {
   return (
-    <div className='modal-backdrop'>
+    ReactDom.createPortal((<div className='modal-backdrop'>
       <div className='modal'>
        {children}
        <button onClick={ handleClose}>Close</button>
       </div>
-    </div>
+    </div>), document.body)
   )
 }
 
