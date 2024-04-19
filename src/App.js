@@ -24,10 +24,15 @@ function App() {
     })
   }
 
+  const subtitle = 'All the latest Events in Mario Kingdom'
+  
   const [showEvents, setShowEvents] = useState(true)
   return (
     <div className="App">
-      <Title/>
+      
+      <Title title="Mario Kingdom Events"
+      subtitle={subtitle}/>
+      
       {/* show Hide buttons */}
       {showEvents && <button onClick={() => setShowEvents(false)}>Hide</button>}
       {!showEvents && <button onClick={() => setShowEvents(true)}>Show</button>}
