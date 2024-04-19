@@ -23,9 +23,16 @@ function App() {
       })
     })
   }
+
+  const [showEvents, setShowEvents] = useState(true)
   return (
     <div className="App">
-      {events.map((event, index) => (
+      {/* show Hide buttons */}
+      {showEvents && <button onClick={() => setShowEvents(false)}>True</button>}
+      {!showEvents && <button onClick={() => setShowEvents(true)}>Show</button>}
+
+      {/* Events list */}
+      {showEvents && events.map((event, index) => (
         <div key={event.id}>
           <h3>{index + 1} - {event.title}</h3>
           <button onClick={() => handleClick(event.id)}> Delete </button>
