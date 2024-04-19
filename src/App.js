@@ -43,12 +43,10 @@ function App() {
       {!showEvents && <button onClick={() => setShowEvents(true)}>Show</button>}
 
       {/* Events list */}
-      {showEvents && events.map((event, index) => (
-        <div key={event.id}>
-          <h3>{index + 1} - {event.title}</h3>
-          <button onClick={() => handleClick(event.id)}> Delete </button>
-        </div>
-      ))}
+      {showEvents && <EventList 
+      events={events} handleClick={handleClick} />}
+
+
       {showModal && <Modal handleClose={handleClose}>
         <img src='./logo192.png' alt='nop' />
         <h3>who's the Enemy?</h3>
