@@ -25,14 +25,19 @@ function App() {
   }
 
   const subtitle = 'All the latest Events in Mario Kingdom'
-  
+
   const [showEvents, setShowEvents] = useState(true)
+
+  // modal closing button func
+  const [showModal, setShowModal] = useState(true)
+  const handleClose = () => setShowModal(false)
+
   return (
     <div className="App">
-      
+
       <Title title="Mario Kingdom Events"
-      subtitle={subtitle}/>
-      
+        subtitle={subtitle} />
+
       {/* show Hide buttons */}
       {showEvents && <button onClick={() => setShowEvents(false)}>Hide</button>}
       {!showEvents && <button onClick={() => setShowEvents(true)}>Show</button>}
@@ -44,10 +49,10 @@ function App() {
           <button onClick={() => handleClick(event.id)}> Delete </button>
         </div>
       ))}
-      <Modal>
-        <img src='./logo192.png' alt='nop'/>
+      {showModal && <Modal handleClose={handleClose}>
+        <img src='./logo192.png' alt='nop' />
         <h3>who's the Enemy?</h3>
-      </Modal>
+      </Modal>}
 
     </div>
   );
