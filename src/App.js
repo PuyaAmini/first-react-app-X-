@@ -27,8 +27,9 @@ function App() {
   const [showEvents, setShowEvents] = useState(true)
   return (
     <div className="App">
+      <Title/>
       {/* show Hide buttons */}
-      {showEvents && <button onClick={() => setShowEvents(false)}>True</button>}
+      {showEvents && <button onClick={() => setShowEvents(false)}>Hide</button>}
       {!showEvents && <button onClick={() => setShowEvents(true)}>Show</button>}
 
       {/* Events list */}
