@@ -19,7 +19,7 @@ function App() {
   const handleClick = (id) => {
     setEvents((prevEvents) => {
       return prevEvents.filter((event) => {
-        return id != event.id
+        return id !== event.id
       })
     })
   }
@@ -44,6 +44,10 @@ function App() {
           <button onClick={() => handleClick(event.id)}> Delete </button>
         </div>
       ))}
+      <Modal>
+        <img src='./logo192.png' alt='nop'/>
+        <h3>who's the Enemy?</h3>
+      </Modal>
 
     </div>
   );
