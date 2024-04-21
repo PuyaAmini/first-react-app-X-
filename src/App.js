@@ -9,10 +9,10 @@ import NewEventForm from './components/NewEventForm';
 function App() {
   //stat hook for managing events
   const [events, setEvents] = useState([
-    { title: 'set question 1', id: 0 },
-    { title: 'set question 2', id: 1 },
-    { title: 'set question 3', id: 2 },
-    { title: 'set question 4', id: 3 },
+    { title: 'set question A', id: 0 },
+    { title: 'set question B', id: 1 },
+    { title: 'set question C', id: 2 },
+    { title: 'set question D', id: 3 },
   ])
 
   // rendering the list of events with delete button
@@ -47,7 +47,9 @@ function App() {
       events={events} handleClick={handleClick} />}
 
 
-      {showModal && <Modal handleClose={handleClose}>
+      {showModal && <Modal
+       handleClose={handleClose}
+       isSalesModel={true}>
         <img src='./logo192.png' alt='nop' />
         <h3>who's the Enemy?</h3>
       </Modal>}

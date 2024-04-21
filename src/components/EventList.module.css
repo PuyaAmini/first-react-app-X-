@@ -1,4 +1,4 @@
-.card {
+.card{
        border: 1px solid #eee;
        box-shadow: 4px 4px 5px #0000000d;
        padding: 10px;
@@ -7,5 +7,6 @@
        border-radius: 4px;
 }
 .card button{
-       background: #555;
+       background:#555;
+       font-weight: bold;
 }
