@@ -30,7 +30,7 @@ function App() {
   const [showEvents, setShowEvents] = useState(true)
 
   // modal closing button func
-  const [showModal, setShowModal] = useState(true)
+  const [showModal, setShowModal] = useState(false)
   const handleClose = () => setShowModal(false)
 
   return (
@@ -53,7 +53,7 @@ function App() {
         isSalesModel={true}>
         <NewEventForm addEvents={addEvents} />
       </Modal>}
-
+      <button onClick={()=> setShowModal(true)}>Add</button>
     </div>
   );
 }

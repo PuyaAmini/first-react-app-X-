@@ -1,5 +1,7 @@
 .title-block .title {
-  display: inline-block;
+  display: block;
+  margin: 10px auto;
+  max-width: 420px;
   padding: 30px 60px;
   background: #f4f4f4;
   border-radius: 8px;
