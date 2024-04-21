@@ -43,15 +43,14 @@ function App() {
       {!showEvents && <button onClick={() => setShowEvents(true)}>Show</button>}
 
       {/* Events list */}
-      {showEvents && <EventList 
-      events={events} handleClick={handleClick} />}
+      {showEvents && <EventList
+        events={events} handleClick={handleClick} />}
 
 
       {showModal && <Modal
-       handleClose={handleClose}
-       isSalesModel={true}>
-        <img src='./logo192.png' alt='nop' />
-        <h3>who's the Enemy?</h3>
+        handleClose={handleClose}
+        isSalesModel={true}>
+        <NewEventForm />
       </Modal>}
 
     </div>
